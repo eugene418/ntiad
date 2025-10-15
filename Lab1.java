@@ -4,5 +4,6 @@ class Program
     {
         IO.println("Hello World!");
         IO.println("Hello World!2");
+        IO.println("Hello World!3");
     }
 }
