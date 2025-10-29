@@ -2,14 +2,29 @@ class Program
 {
     public static void main(String[] args)
     {
-        var ob = new OutputBuilder();
+        var ob = new OutputBuilder(5, 7);
         ob.PrintPyromid(10);
-        ob.PrintMatrix(5, 7);
+        ob.PrintMatrix();
     }
 }
 
 class OutputBuilder
 {
+    private int[][] _matrix;
+
+    public OutputBuilder(int m, int n)
+    {
+        _matrix = new int[m][n];
+
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                _matrix[i][j] = (i + j) * 3;
+            }
+        }
+    }
+
     public void PrintPyromid(int height)
     {
         var sb = new StringBuilder();
@@ -32,24 +47,15 @@ class OutputBuilder
         IO.print(sb);
     }
 
-    public void PrintMatrix(int m, int n)
+    public void PrintMatrix()
     {
-        var matrix = new int[m][n];
         var sb = new StringBuilder();
 
-        for (int i = 0; i < m; i++)
+        for (int i = 0; i < _matrix.length; i++)
         {
-            for (int j = 0; j < n; j++)
+            for (int j = 0; j < _matrix[i].length; j++)
             {
-                matrix[i][j] = (i + j) * 3;
-            }
-        }
-
-        for (int i = 0; i < m; i++)
-        {
-            for (int j = 0; j < n; j++)
-            {
-                sb.append(String.format("%4d ", matrix[i][j]));
+                sb.append(String.format("%4d ", _matrix[i][j]));
             }
 
             sb.append('\n');
