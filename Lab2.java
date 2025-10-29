@@ -34,13 +34,22 @@ class OutputBuilder
 
     public void PrintMatrix(int m, int n)
     {
+        var matrix = new int[m][n];
         var sb = new StringBuilder();
 
         for (int i = 0; i < m; i++)
         {
             for (int j = 0; j < n; j++)
             {
-                sb.append(String.format("%4d ", (i + j) * 3));
+                matrix[i][j] = (i + j) * 3;
+            }
+        }
+
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                sb.append(String.format("%4d ", matrix[i][j]));
             }
 
             sb.append('\n');
